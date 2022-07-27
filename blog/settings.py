@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-lh6)^*gd!vcs-@!hx9mfhq@p!s@q5mo4(dl+j5*r)%kkj^6d7p'
+SECRET_KEY = config.DJANGO_COF['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_rename_app',
     'rest_framework',
+    'blog_auth',
 ]
 
 MIDDLEWARE = [
@@ -73,23 +75,23 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config.MYSQL_COF['db_name'],
-        'USER': config.MYSQL_COF['user'],
-        'PASSWORD': config.MYSQL_COF['password'],
-        'HOST': config.MYSQL_COF['ip'],
-        'PORT': config.MYSQL_COF['PASSWORD'],
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': config.MYSQL_COF['db_name'],
+#         'USER': config.MYSQL_COF['user'],
+#         'PASSWORD': config.MYSQL_COF['password'],
+#         'HOST': config.MYSQL_COF['ip'],
+#         'PORT': config.MYSQL_COF['PASSWORD'],
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
